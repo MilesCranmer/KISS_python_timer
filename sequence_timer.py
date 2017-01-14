@@ -9,7 +9,7 @@ import sys
 import numpy as np
 
 #To create popup
-from Tkinter import *
+from Tkinter import Tk, mainloop
 
 def multitimer(time_steps):
     while True:
@@ -21,12 +21,12 @@ def multitimer(time_steps):
             sec = 60
             #can also call less than a minute
             if time_step < 1:
-                    sec = int(60*time_step)
+                sec = int(60*time_step)
 #Loop until minutes is reached
             while mins < time_step:
-                    time.sleep(sec)
-                    #One more minute!
-                    mins += 1
+                time.sleep(sec)
+                #One more minute!
+                mins += 1
 #when time is over, create dialog box:
             root = Tk() 
             root.title("%d minutes are up!" % (time_step))
@@ -36,7 +36,7 @@ def multitimer(time_steps):
 
 #starts program with entered time in minutes, or 10 minutes
 if __name__ == "__main__":
-    if len(sys.argv) not in [5]:
+    if len(sys.argv) not in [5, 6]:
         print("Not the right number of arguments!")
         exit()
     initial_time = float(sys.argv[1])
@@ -47,17 +47,15 @@ if __name__ == "__main__":
         initial_time = np.log10(initial_time)
         final_time = np.log10(final_time)
         time_steps = np.logspace(
-                initial_time, final_time,
-                num=number_different_times_in_series)
+            initial_time, final_time,
+            num=number_different_times_in_series)
     elif sys.argv[4] == 'a':
         time_steps = np.linspace(
-                initial_time, final_time,
-                num=number_different_times_in_series)
+            initial_time, final_time,
+            num=number_different_times_in_series)
     else:
-        print("Please provide g or a as your final argument")
+        print("Please provide g or a as your fourth argument")
         print("g=geometric, a=arithmetic")
         exit()
-
-
-    print time_steps
-    #multitimer(time_steps)
+    
+    multitimer(time_steps)
