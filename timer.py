@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import time
 import sys
-from Tkinter import *
+from Tkinter import Tk, mainloop
 
 def timer(minutes):
 	print "Started at " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
