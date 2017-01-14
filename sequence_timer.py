@@ -16,25 +16,14 @@ def multitimer(time_steps):
         for time_step in time_steps:
             print "Started at " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
             print "Running for %f minutes" %(time_step)
-            mins = 0
-            #60 seconds of sleep
-            sec = 60
-            #can also call less than a minute
-            if time_step < 1:
-                sec = int(60*time_step)
-#Loop until minutes is reached
-            while mins < time_step:
-                time.sleep(sec)
-                #One more minute!
-                mins += 1
-#when time is over, create dialog box:
+            time.sleep(int(60.0*time_step))
+            #when time is over, create dialog box:
             root = Tk() 
             root.title("%d minutes are up!" % (time_step))
             root.lift()
             root.call('wm', 'attributes', '.', '-topmost', '1')
             mainloop()
 
-#starts program with entered time in minutes, or 10 minutes
 if __name__ == "__main__":
     if len(sys.argv) not in [5, 6]:
         print("Not the right number of arguments!")
@@ -57,5 +46,5 @@ if __name__ == "__main__":
         print("Please provide g or a as your fourth argument")
         print("g=geometric, a=arithmetic")
         exit()
-    
+
     multitimer(time_steps)
