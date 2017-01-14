@@ -20,7 +20,7 @@ python sequence_timer.py <initial time in minutes> <final time in minutes> \
   <number of different times> <a for arithmetic series, g for geometric series>
 ```
 
-For example:
+# Examples
 
 Time 30 seconds, then create a dialog box:
 ```
